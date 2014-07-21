@@ -16,5 +16,5 @@ png("plot4.png", width = 600, height = 600)
 plot(emissions ~ year, data=totals_coal, type="b",
      xlim=c(1998,2010), xlab="Year",
      ylim=c(0, 8), ylab=expression("Total Emisions (10"^5*" tons)"),
-     main=expression("PM"[2.5]*" Emissions from Coal in the United States"))
+     main=expression("PM"[2.5]*" emissions from coal in the United States"))
 dev.off()

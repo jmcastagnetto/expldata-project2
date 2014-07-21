@@ -15,6 +15,6 @@ totals <- aggregate(x=baltimore$Emissions, by=list(year=baltimore$year), FUN=sum
 png("plot2.png", width = 600, height = 600)
 plot(x ~ year, data=totals, type="b",
      xlim=c(1998,2010), xlab="Year",
-     ylim=c(0,3400), ylab="Total emisions (tons)",
-     main=expression("PM"[2.5]*" Emissions Baltimore City, MD"))
+     ylim=c(0,3400), ylab="Total emissions (tons)",
+     main=expression("PM"[2.5]*" emissions in Baltimore City, MD"))
 dev.off()

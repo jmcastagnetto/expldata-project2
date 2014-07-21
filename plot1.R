@@ -15,5 +15,5 @@ png("plot1.png", width = 600, height = 600)
 plot(emissions ~ year, data=totals, type="b",
      xlim=c(1998,2010), xlab="Year",
      ylim=c(0, 8), ylab="Total emisions (millions of tons)",
-     main=expression("PM"[2.5]*" Emissions in the United States"))
+     main=expression("PM"[2.5]*" emissions from all sources in the United States"))
 dev.off()

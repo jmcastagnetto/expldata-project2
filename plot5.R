@@ -16,5 +16,5 @@ png("plot5.png", width = 600, height = 600)
 plot(x ~ year, data=totals_vehicles, type="b",
      xlim=c(1998,2010), xlab="Year",
      ylim=c(0,410), ylab="Total emisions (tons)",
-     main=expression("PM"[2.5]*" Vehicle Emissions Baltimore City, MD"))
+     main=expression("PM"[2.5]*" vehicle emissions in Baltimore City, MD"))
 dev.off()

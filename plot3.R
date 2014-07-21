@@ -22,7 +22,7 @@ library(ggplot2)
 png("plot3.png", width = 600, height = 600)
 p <- ggplot(data = totals_per_type, aes(x = year, y=x , color=type, group=type))
 p + ylab("Total Emissions (tons)") + xlab("Year") +
-    ggtitle(expression("PM"[2.5]*" Emissions by Type in Baltimore City, MD")) +
+    ggtitle(expression("PM"[2.5]*" emissions by type in Baltimore City, MD")) +
     scale_color_discrete(name="Type of source") +
     geom_point(size=3) + geom_line() + theme_bw()
 dev.off()
