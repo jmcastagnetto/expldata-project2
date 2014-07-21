@@ -58,8 +58,8 @@ g_legend<-function(a.gplot){
 legend <- g_legend(p3)
 
 library(gridExtra)
+png("plot6.png", width = 600, height = 600)
 grid.arrange(p1,p2,p3 + theme(legend.position="none"), legend,
-             main=textGrob(expression("PM"[2.5]*" Emissions by City")),
+             main=textGrob(expression("Change of PM"[2.5]*" Emissions by City (1999-2008)")),
              ncol=2)
-
-
+dev.off()
