@@ -46,7 +46,9 @@ p3 <- p3 + geom_point(size=3) + geom_line() +
     xlab("Year") + ylab("Percent change") +
     ylim(-80, 30) +
     ggtitle("Percent Change (ref: 1999)") +
-    theme_bw()
+    theme_bw() +
+    theme(legend.text=element_text(size=20),
+          legend.title=element_text(size=20))
 
 g_legend<-function(a.gplot){
     tmp <- ggplot_gtable(ggplot_build(a.gplot))
@@ -60,6 +62,7 @@ legend <- g_legend(p3)
 library(gridExtra)
 png("plot6.png", width = 600, height = 600)
 grid.arrange(p1,p2,p3 + theme(legend.position="none"), legend,
-             main=textGrob(expression("Change of PM"[2.5]*" Emissions by City (1999-2008)")),
+             main=textGrob(expression("Change of PM"[2.5]*" Emissions by City (1999-2008)"),
+                           gp=gpar(fontsize=24)),
              ncol=2)
 dev.off()
