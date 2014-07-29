@@ -1,0 +1,78 @@
+
+R version 3.1.1 (2014-07-10) -- "Sock it to Me"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> # simple benchmark
+> # reading all columns
+> timing <- replicate(5, system.time({
++     NEI <- readRDS("summarySCC_PM25.rds")
++ }))
+> timing
+             [,1]   [,2]   [,3]   [,4]   [,5]
+user.self  22.057 17.581 17.533 17.585 17.865
+sys.self    0.284  0.164  0.212  0.104  0.120
+elapsed    24.673 18.932 18.333 17.774 18.125
+user.child  0.000  0.000  0.000  0.000  0.000
+sys.child   0.000  0.000  0.000  0.000  0.000
+> # mean of elapsed time
+> mean(timing["elapsed",])
+[1] 19.5674
+> # size in bytes
+> NEI <- readRDS("summarySCC_PM25.rds")
+> object.size(NEI)
+680238992 bytes
+> 
+> # reading only the "Emmisions" and "year" columns
+> timing <- replicate(5, system.time({
++     NEI2 <- readRDS("summarySCC_PM25.rds")[,c("Emissions", "year")]
++ }))
+> timing
+             [,1]   [,2]   [,3]   [,4]   [,5]
+user.self  17.797 17.689 17.589 17.813 17.801
+sys.self    0.124  0.108  0.212  0.160  0.128
+elapsed    17.983 17.864 17.904 18.040 17.994
+user.child  0.000  0.000  0.000  0.000  0.000
+sys.child   0.000  0.000  0.000  0.000  0.000
+> # mean of elapsed time
+> mean(timing["elapsed",])
+[1] 17.957
+> # size in bytes
+> NEI2 <- readRDS("summarySCC_PM25.rds")[,c("Emissions", "year")]
+> object.size(NEI2)
+471855232 bytes
+> 
+> sessionInfo()
+R version 3.1.1 (2014-07-10)
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+> 
+> proc.time()
+   user  system elapsed 
+261.240   2.740 270.893 
